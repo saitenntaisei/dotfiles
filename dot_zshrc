@@ -1,0 +1,53 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1024
+SAVEHIST=1000
+setopt autocd nomatch notify
+unsetopt beep extendedglob
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/saitenntaisei/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# 小文字でも大文字ディレクトリ、ファイルを補完できるようにする
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# asdf
+. $HOME/.asdf/asdf.sh
+
+# Starship
+eval "$(starship init zsh)"
+
+# autosuggestion
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# cusor
+# _fix_cursor() {
+#    echo -ne '\e[5 q'
+# }
+# precmd_functions+=(_fix_cursor)
+
+# history 
+setopt hist_ignore_dups
+
+# stop beep
+setopt no_beep
+
+# objdump
+alias -- "objdump"="objdump -M intel"
+# mikan os
+alias -- "qemu"="$HOME/osbook/devenv/run_qemu.sh"
+# bat
+alias cat='bat --paging=never --theme=OneHalfDark --style=plain --map-syntax="*.sage:Python"'
+alias bat='bat --paging=never --theme=OneHalfDark --map-syntax="*.sage:Python"'
+# path setting
+set-window-title() {
+  echo -ne "\033]0;$(pwd | sed -e "s;^$HOME;~;")\a"
+}
+precmd() {
+   set-window-title
+}
+
