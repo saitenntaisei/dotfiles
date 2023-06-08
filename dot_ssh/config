@@ -1,6 +1,6 @@
 Host github github.com
   HostName github.com
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
   User git
 
 Host poifull poifull.rogiken.org
