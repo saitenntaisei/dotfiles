@@ -7,3 +7,8 @@ Host poifull poifull.rogiken.org
   HostName poifull.rogiken.org
   IdentityFile ~/.ssh/id_rsa
   User 21-const
+
+Host pi raspberrypi
+  HostName raspberrypi
+  IdentityFile ~/.ssh/id_ed25519
+  User pi
