@@ -58,7 +58,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
 alias cat2='bat'
 alias hexdump2='hexyl'
-alias zellij='zellij options --disable-mouse-mode'
+# alias zellij='zellij options --disable-mouse-mode'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 # CTRL-/ to toggle small preview window to see the full command
 # CTRL-Y to copy the command into clipboard using pbcopy
