@@ -12,6 +12,7 @@ Host pi raspberrypi
   HostName raspberrypi
   IdentityFile ~/.ssh/id_ed25519
   User pi
+  ForwardX11 yes
 
 Host d1 192.168.1.220
   HostName 192.168.1.220
@@ -33,3 +34,4 @@ Host nlab-nuc nlab-nuc.local
   User kamiguchi
   ForwardX11 yes
 
+  
