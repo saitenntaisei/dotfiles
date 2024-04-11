@@ -95,5 +95,7 @@ if wezterm.config_builder then
     { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
   }
 
+  config.window_close_confirmation = 'NeverPrompt'
+
   return config
 
