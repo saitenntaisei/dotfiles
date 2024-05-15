@@ -2,6 +2,6 @@
 	email = saitenntaisei@gmail.com
 	name = saitenntaisei
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [url "git@github.com:"]
   insteadOf = https://github.com/
