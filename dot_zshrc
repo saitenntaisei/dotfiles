@@ -52,7 +52,6 @@ precmd() {
    set-window-title
 }
 
-. $HOME/.asdf/plugins/java/set-java-home.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
@@ -84,12 +83,5 @@ export PATH=$PATH:/opt/gcc-arm-none-eabi/bin
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$GOPATH/bin
 alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it --rm -v  ./:/host -w /host  sagemath sage'
-export GOPRIVATE=github.com/no9jp
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+
