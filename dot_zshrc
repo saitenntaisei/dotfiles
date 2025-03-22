@@ -15,10 +15,10 @@ compinit
 
 # 小文字でも大文字ディレクトリ、ファイルを補完できるようにする
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# asdf
-. $HOME/.asdf/asdf.sh
-# Starship
-eval "$(starship init zsh)"
+
+
+
+
 
 # autosuggestion
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -85,3 +85,9 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it --rm -v  ./:/host -w /host  sagemath sage'
 
+
+# mise 
+eval "$(mise activate zsh)"
+
+# Starship
+eval "$(starship init zsh)"
