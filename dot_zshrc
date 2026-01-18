@@ -91,3 +91,9 @@ eval "$(mise activate zsh)"
 
 # Starship
 eval "$(starship init zsh)"
+
+
+eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
+
+
+
