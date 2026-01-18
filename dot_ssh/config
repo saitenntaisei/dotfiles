@@ -1,3 +1,8 @@
+Host raspberry.local
+  HostName raspberry.local
+  ForwardAgent yes
+  User pi
+
 Host github github.com
   HostName github.com
   IdentityFile ~/.ssh/id_ed25519
@@ -18,11 +23,14 @@ Host d1 192.168.1.220
   HostName 192.168.1.220
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
-
+  ForwardAgent yes
+  # RemoteCommand echo "Ussr19911225" | cifscreds add -u ug04066@TSUBAME  gshs.t4.gsic.titech.ac.jp
 Host d2 192.168.1.221
   HostName 192.168.1.221
   IdentityFile ~/.ssh/id_ed25519
+  ForwardAgent yes
   User kamiguchi
+  ForwardX11 yes
 
 Host d3 192.168.1.222
   HostName 192.168.1.222
@@ -39,3 +47,17 @@ Host nlab-win 192.168.1.223
   IdentityFile ~/.ssh/id_ed25519
   AddKeysToAgent yes
   User kamiguchi
+
+
+Host tsubame
+  HostName login.t4.gsic.titech.ac.jp
+  User ug04066
+  ForwardAgent yes
+
+Host dp-render
+  HostName 192.168.1.220
+  IdentityFile ~/.ssh/id_ed25519
+  User root
+  ForwardAgent yes
+  ForwardX11 yes
+  Port 2223
