@@ -17,7 +17,7 @@ if wezterm.config_builder then
     -- This is the deepest/back-most layer. It will be rendered first
     {
       source = {
-        File = '/home/saitenntaisei/Pictures/miko.jpg',
+        File = '/home/saiten/Pictures/miko.png',
       },
       -- The texture tiles vertically but not horizontally.
       -- When we repeat it, mirror it so that it appears "more seamless".
@@ -93,7 +93,7 @@ if wezterm.config_builder then
       mods = 'CTRL',
       action = act.CloseCurrentPane { confirm = true },
     },
-    { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
+    -- { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
     {
       key = 'h',
       mods = 'CTRL',
