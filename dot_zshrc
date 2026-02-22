@@ -77,8 +77,11 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 export PATH=$PATH:/opt/gcc-arm-none-eabi/bin
 # append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 autoload -Uz compinit && compinit
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
@@ -87,6 +90,5 @@ export GOPRIVATE=github.com/no9jp
 export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 . $HOME/.asdf/plugins/java/set-java-home.zsh
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"

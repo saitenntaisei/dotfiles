@@ -18,6 +18,7 @@ Host d1 192.168.1.220
   HostName 192.168.1.220
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
+  ServerAliveInterval 60
 
 Host d2 192.168.1.221
   HostName 192.168.1.221
@@ -39,3 +40,7 @@ Host nlab-win 192.168.1.223
   IdentityFile ~/.ssh/id_ed25519
   AddKeysToAgent yes
   User kamiguchi
+Host tsubame
+  HostName login.t4.gsic.titech.ac.jp
+  User ug04066
+  ForwardAgent yes
