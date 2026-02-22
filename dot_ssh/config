@@ -24,7 +24,7 @@ Host d1 192.168.1.220
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
   ForwardAgent yes
-  # RemoteCommand echo "Ussr19911225" | cifscreds add -u ug04066@TSUBAME  gshs.t4.gsic.titech.ac.jp
+
 Host d2 192.168.1.221
   HostName 192.168.1.221
   IdentityFile ~/.ssh/id_ed25519
