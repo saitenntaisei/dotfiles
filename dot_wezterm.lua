@@ -49,6 +49,7 @@ if wezterm.config_builder then
 
   -- キーバインドの設定
   local act = wezterm.action
+
   config.keys = {
     {
       key = 'd',
@@ -93,7 +94,26 @@ if wezterm.config_builder then
       mods = 'CTRL',
       action = act.CloseCurrentPane { confirm = true },
     },
-    { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
+    -- { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
+    {
+      key = 'h',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize { 'Left', 5 },
+    },
+    {
+      key = 'j',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize { 'Down', 5 },
+    },
+    { key = 'k',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize { 'Up', 5 },
+    },
+    {
+      key = 'l',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize { 'Right', 5 },
+    },
   }
 
   config.window_close_confirmation = 'NeverPrompt'

@@ -83,12 +83,17 @@ export PATH=$PATH:/opt/gcc-arm-none-eabi/bin
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 autoload -Uz compinit && compinit
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$GOPATH/bin
 alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it --rm -v  ./:/host -w /host  sagemath sage'
-export GOPRIVATE=github.com/no9jp
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
-. $HOME/.asdf/plugins/java/set-java-home.zsh
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+
+# mise 
+eval "$(mise activate zsh)"
+
+# Starship
+eval "$(starship init zsh)"
+
+
+eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
+
+
+
