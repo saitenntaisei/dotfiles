@@ -1,3 +1,4 @@
+Include "/home/saiten/.config/NVIDIA/Sync/config/ssh_config"
 Host raspberry.local
   HostName raspberry.local
   ForwardAgent yes
@@ -48,6 +49,13 @@ Host nlab-win 192.168.1.223
   AddKeysToAgent yes
   User kamiguchi
 
+Host dubguild
+  HostName 100.118.197.98
+  User kamiguchi
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+  TCPKeepAlive yes
+  ForwardAgent yes
 
 Host tsubame
   HostName login.t4.gsic.titech.ac.jp

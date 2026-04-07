@@ -97,3 +97,9 @@ eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
 
 
 
+
+
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+
+source <(fzf --zsh)

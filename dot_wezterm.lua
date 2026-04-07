@@ -8,7 +8,7 @@ if wezterm.config_builder then
 
   -- カラースキームの設定
   config.color_scheme = 'AdventureTime'
-
+  config.hide_mouse_cursor_when_typing = false
   -- フォントの設定
   config.font = wezterm.font("NotoMono Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
   -- フォントサイズの設定
@@ -26,11 +26,11 @@ if wezterm.config_builder then
       repeat_x = 'NoRepeat',
       vertical_align = 'Middle',
       horizontal_align = 'Center',
-      opacity = 0.90,
+      opacity = 0.95,
       hsb = {
         -- 背景画像の明るさ
         -- 1.0で元画像から変更なし
-        brightness = 0.05,
+        brightness = 0.01,
         -- 色相の設定
         -- 1.0で元画像から変更なし
         hue = 1.0,
@@ -38,10 +38,7 @@ if wezterm.config_builder then
         -- 1.0で元画像から変更なし
         saturation = 1.0,
       },
-      -- When the viewport scrolls, move this layer 10% of the number of
-      -- pixels moved by the main viewport. This makes it appear to be
-      -- further behind the text.
-      attachment = { Parallax = 0.1 },
+      attachment = "Fixed",
     }
   }
 
@@ -96,23 +93,25 @@ if wezterm.config_builder then
     -- { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
     {
       key = 'h',
-      mods = 'CTRL',
+      mods = 'ALT',
       action = act.AdjustPaneSize { 'Left', 5 },
     },
     {
       key = 'j',
-      mods = 'CTRL',
+      mods = 'ALT',
       action = act.AdjustPaneSize { 'Down', 5 },
     },
     { key = 'k',
-      mods = 'CTRL',
+      mods = 'ALT',
       action = act.AdjustPaneSize { 'Up', 5 },
     },
     {
       key = 'l',
-      mods = 'CTRL',
+      mods = 'ALT',
       action = act.AdjustPaneSize { 'Right', 5 },
     },
+     
+     { key = 'x', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment },
   }
 
   config.window_close_confirmation = 'NeverPrompt'
