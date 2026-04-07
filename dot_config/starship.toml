@@ -85,7 +85,9 @@ $character"""
 
 [aws]
 symbol = "  "
-
+disabled = true
+[gcloud]
+disabled = true
 [buf]
 symbol = " "
 

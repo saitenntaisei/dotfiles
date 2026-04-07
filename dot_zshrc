@@ -103,3 +103,8 @@ export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 source <(fzf --zsh)
+
+export MISE_DISABLE_PLUGIN_PYTHON=1
+
+# echo eval `keychain --eval --agents ssh $HOME/.ssh/id_ed25519`
+source $HOME/wezterm.sh
