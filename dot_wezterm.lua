@@ -48,13 +48,13 @@ if wezterm.config_builder then
 
   config.keys = {
     {
-      key = 'd',
-      mods = 'SHIFT|ALT',
+      key = '=',
+      mods = 'CTRL|ALT',
       action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
-      key = 'd',
-      mods = 'ALT',
+      key = '-',
+      mods = 'CTRL|ALT',
       action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
     -- Ctrl+左矢印でカーソルを前の単語に移動
