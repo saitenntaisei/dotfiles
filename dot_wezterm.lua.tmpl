@@ -39,10 +39,7 @@ if wezterm.config_builder then
         -- 1.0で元画像から変更なし
         saturation = 1.0,
       },
-      -- When the viewport scrolls, move this layer 10% of the number of
-      -- pixels moved by the main viewport. This makes it appear to be
-      -- further behind the text.
-      attachment = { Parallax = 0.1 },
+      attachment = "Fixed",
     }
   }
 
@@ -50,68 +47,84 @@ if wezterm.config_builder then
   -- キーバインドの設定
   local act = wezterm.action
 
+{{- if eq .chezmoi.os "darwin" }}
+  local split_horizontal_key = '='
+  local split_horizontal_mods = 'CMD|CTRL'
+  local split_vertical_key = '-'
+  local split_vertical_mods = 'CMD|CTRL'
+  local shortcut_mods = 'CMD'
+  local word_delete_mods = 'CMD'
+{{- else }}
+  local split_horizontal_key = 'd'
+  local split_horizontal_mods = 'SHIFT|ALT'
+  local split_vertical_key = 'd'
+  local split_vertical_mods = 'ALT'
+  local shortcut_mods = 'CTRL'
+  local word_delete_mods = 'CTRL'
+{{- end }}
+
   config.keys = {
     {
-      key = 'd',
-      mods = 'SHIFT|ALT',
+      key = split_horizontal_key,
+      mods = split_horizontal_mods,
       action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
-      key = 'd',
-      mods = 'ALT',
+      key = split_vertical_key,
+      mods = split_vertical_mods,
       action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
-    -- Ctrl+左矢印でカーソルを前の単語に移動
+    -- 左矢印でカーソルを前の単語に移動
     {
       key = "LeftArrow",
-      mods = "CTRL",
+      mods = shortcut_mods,
       action = act.SendKey {
         key = "b",
         mods = "META",
       },
     },
-    -- Ctrl+右矢印でカーソルを次の単語に移動
+    -- 右矢印でカーソルを次の単語に移動
     {
       key = "RightArrow",
-      mods = "CTRL",
+      mods = shortcut_mods,
       action = act.SendKey {
         key = "f",
         mods = "META",
       },
     },
-    -- Ctrl+Backspaceで前の単語を削除
+    -- Backspaceで前の単語を削除
     {
       key = "Backspace",
-      mods = "CTRL",
+      mods = shortcut_mods,
       action = act.SendKey {
         key = "w",
-        mods = "CTRL",
+        mods = word_delete_mods,
       },
     },
     -- kill a pane
     {
       key = 'x',
-      mods = 'CTRL',
+      mods = shortcut_mods,
       action = act.CloseCurrentPane { confirm = true },
     },
     -- { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
     {
       key = 'h',
-      mods = 'CTRL',
+      mods = shortcut_mods,
       action = act.AdjustPaneSize { 'Left', 5 },
     },
     {
       key = 'j',
-      mods = 'CTRL',
+      mods = shortcut_mods,
       action = act.AdjustPaneSize { 'Down', 5 },
     },
     { key = 'k',
-      mods = 'CTRL',
+      mods = shortcut_mods,
       action = act.AdjustPaneSize { 'Up', 5 },
     },
     {
       key = 'l',
-      mods = 'CTRL',
+      mods = shortcut_mods,
       action = act.AdjustPaneSize { 'Right', 5 },
     },
   }
@@ -119,4 +132,3 @@ if wezterm.config_builder then
   config.window_close_confirmation = 'NeverPrompt'
 
   return config
-
