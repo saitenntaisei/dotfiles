@@ -19,7 +19,6 @@ return {
 		},
 		automatic_enable = {
 			exclude = {
-                "gopls",
 				"rust_analyzer",
 				"terraformls",
 			},
