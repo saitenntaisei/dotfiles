@@ -15,12 +15,13 @@ compinit
 
 # 小文字でも大文字ディレクトリ、ファイルを補完できるようにする
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# Starship
-eval "$(starship init zsh)"
 
 # autosuggestion
-# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+{{- if eq .chezmoi.os "darwin" }}
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+{{- else if eq .chezmoi.os "linux" }}
+source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+{{- end }}
 # cusor
 # _fix_cursor() {
 #    echo -ne '\e[5 q'
