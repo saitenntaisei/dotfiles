@@ -1,0 +1,7 @@
+/* One image per tab, shared by every native Ghostty split pane. */
+.tab {
+  background-image: url("../../Pictures/miko.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
