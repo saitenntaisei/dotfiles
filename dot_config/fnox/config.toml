@@ -1,0 +1,10 @@
+[daemon]
+enabled = true
+idle_timeout = "8h"
+
+[providers.op]
+type = "1password"
+vault = "Personal"
+
+[secrets]
+OPENAI_API_KEY = { provider = "op", value = "op://Personal/nc7f26c7a3fu2gl7ll4ytp7szi/credential" }

@@ -86,6 +86,9 @@ alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it -
 # mise 
 eval "$(mise activate zsh)"
 
+# fnox
+eval "$(fnox activate zsh)"
+
 # Starship
 eval "$(starship init zsh)"
 
@@ -93,7 +96,11 @@ eval "$(starship init zsh)"
 eval `keychain --eval ~/.ssh/id_ed25519`
 export CLAUDE_CODE_EFFORT_LEVEL=max
 
+if [[ "$OSTYPE" == linux* ]]; then
+  export PATH="/usr/local/cuda/bin:$PATH"
+  export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+fi
 
+source <(fzf --zsh)
 
-
-export PATH="/Users/saitenntaisei/.pixi/bin:$PATH"
+export PATH="$HOME/.pixi/bin:$PATH"
