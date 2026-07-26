@@ -9,6 +9,9 @@ if wezterm.config_builder then
   -- カラースキームの設定
   config.color_scheme = 'AdventureTime'
   config.hide_mouse_cursor_when_typing = false
+  -- config.window_decorations = "RESIZE" --"INTEGRATED_BUTTONS|RESIZE"
+  -- config.use_resize_increments = false
+  config.enable_wayland = false
   -- フォントの設定
   config.font = wezterm.font("NotoMono Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
   -- フォントサイズの設定
@@ -17,7 +20,7 @@ if wezterm.config_builder then
     -- This is the deepest/back-most layer. It will be rendered first
     {
       source = {
-        File = '/home/saiten/Pictures/miko.png',
+        File = wezterm.home_dir .. '/Pictures/miko.png',
       },
       -- The texture tiles vertically but not horizontally.
       -- When we repeat it, mirror it so that it appears "more seamless".
@@ -117,4 +120,3 @@ if wezterm.config_builder then
   config.window_close_confirmation = 'NeverPrompt'
 
   return config
-
