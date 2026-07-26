@@ -9,13 +9,18 @@ if wezterm.config_builder then
   -- カラースキームの設定
   config.color_scheme = 'AdventureTime'
   config.hide_mouse_cursor_when_typing = false
+{{- if eq .chezmoi.os "linux" }}
   -- config.window_decorations = "RESIZE" --"INTEGRATED_BUTTONS|RESIZE"
   -- config.use_resize_increments = false
   config.enable_wayland = false
+{{- end }}
   -- フォントの設定
   config.font = wezterm.font("NotoMono Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
   -- フォントサイズの設定
   config.font_size = 13
+{{- if eq .chezmoi.os "darwin" }}
+  config.macos_window_background_blur = 20
+{{- end }}
   config.background = {
     -- This is the deepest/back-most layer. It will be rendered first
     {
@@ -49,72 +54,90 @@ if wezterm.config_builder then
   -- キーバインドの設定
   local act = wezterm.action
 
+{{- if eq .chezmoi.os "darwin" }}
+  local split_horizontal_key = '='
+  local split_horizontal_mods = 'CMD|CTRL'
+  local split_vertical_key = '-'
+  local split_vertical_mods = 'CMD|CTRL'
+  local shortcut_mods = 'CMD'
+  local word_delete_mods = 'CMD'
+  local resize_mods = 'CMD'
+  local close_pane_action = act.CloseCurrentPane { confirm = true }
+{{- else }}
+  local split_horizontal_key = '='
+  local split_horizontal_mods = 'CTRL|ALT'
+  local split_vertical_key = '-'
+  local split_vertical_mods = 'CTRL|ALT'
+  local shortcut_mods = 'CTRL'
+  local word_delete_mods = 'CTRL'
+  local resize_mods = 'ALT'
+  local close_pane_action = act.DisableDefaultAssignment
+{{- end }}
+
   config.keys = {
     {
-      key = '=',
-      mods = 'CTRL|ALT',
+      key = split_horizontal_key,
+      mods = split_horizontal_mods,
       action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
-      key = '-',
-      mods = 'CTRL|ALT',
+      key = split_vertical_key,
+      mods = split_vertical_mods,
       action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
-    -- Ctrl+左矢印でカーソルを前の単語に移動
+    -- 左矢印でカーソルを前の単語に移動
     {
       key = "LeftArrow",
-      mods = "CTRL",
+      mods = shortcut_mods,
       action = act.SendKey {
         key = "b",
         mods = "META",
       },
     },
-    -- Ctrl+右矢印でカーソルを次の単語に移動
+    -- 右矢印でカーソルを次の単語に移動
     {
       key = "RightArrow",
-      mods = "CTRL",
+      mods = shortcut_mods,
       action = act.SendKey {
         key = "f",
         mods = "META",
       },
     },
-    -- Ctrl+Backspaceで前の単語を削除
+    -- Backspaceで前の単語を削除
     {
       key = "Backspace",
-      mods = "CTRL",
+      mods = shortcut_mods,
       action = act.SendKey {
         key = "w",
-        mods = "CTRL",
+        mods = word_delete_mods,
       },
     },
     -- kill a pane
     {
       key = 'x',
-      mods = 'CTRL',
-      action = act.CloseCurrentPane { confirm = true },
+      mods = shortcut_mods,
+      action = close_pane_action,
     },
     -- { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
     {
       key = 'h',
-      mods = 'ALT',
+      mods = resize_mods,
       action = act.AdjustPaneSize { 'Left', 5 },
     },
     {
       key = 'j',
-      mods = 'ALT',
+      mods = resize_mods,
       action = act.AdjustPaneSize { 'Down', 5 },
     },
     { key = 'k',
-      mods = 'ALT',
+      mods = resize_mods,
       action = act.AdjustPaneSize { 'Up', 5 },
     },
     {
       key = 'l',
-      mods = 'ALT',
+      mods = resize_mods,
       action = act.AdjustPaneSize { 'Right', 5 },
     },
-     
-     { key = 'x', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment },
   }
 
   config.window_close_confirmation = 'NeverPrompt'

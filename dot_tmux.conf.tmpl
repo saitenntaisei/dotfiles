@@ -17,8 +17,13 @@ set-option -g mouse on
 # コピーモードのキー操作をviライクにする
 set-window-option -g mode-keys vi
 
-# コピーした際にWindowsのクリップボードにも転送する (要 xsel)
+{{- if eq .chezmoi.os "darwin" }}
+# コピーした内容をmacOSのクリップボードへ転送する
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
+{{- else }}
+# コピーした内容をX11のクリップボードへ転送する (要 xsel)
 bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -bi"
+{{- end }}
 # ───────────────────────────────────────────────────
 
 # ───────────────────────────────────────────────────

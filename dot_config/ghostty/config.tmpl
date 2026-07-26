@@ -55,13 +55,23 @@ mouse-hide-while-typing = false
 font-family = NotoMono Nerd Font
 font-size = 13
 
-# 各ペインの背景を5%透過させ、背後の共通画像を薄く表示する
+# 背景を5%透過させる
 # 1 = 不透明、0 = 完全透過
 background-opacity = 0.95
 
+{{- if eq .chezmoi.os "linux" }}
 # Ghostty 1.3.1 の background-image はペインごとに描画されるため、
 # GTKのタブ背景に画像を置き、全ペインで1枚の画像を共有する
 gtk-custom-css = background-image.css
+{{- else if eq .chezmoi.os "darwin" }}
+# macOSではGTK CSSを使えないため、Ghostty標準の背景画像を使用する
+# 背景画像はペインごとに描画される
+background-image = {{ .chezmoi.homeDir }}/Pictures/miko.png
+background-image-opacity = 1
+background-image-position = center
+background-image-fit = cover
+background-image-repeat = false
+{{- end }}
 
 # 非アクティブペインだけ暗くなり、画像が分断されて見えるのを防ぐ
 unfocused-split-opacity = 1
@@ -75,6 +85,28 @@ confirm-close-surface = false
 
 # --- キーバインドの設定 ---
 
+{{- if eq .chezmoi.os "darwin" }}
+# Cmd+Ctrl+= で横に分割
+keybind = cmd+ctrl+equal=new_split:right
+# Cmd+Ctrl+- で縦に分割
+keybind = cmd+ctrl+minus=new_split:down
+
+# Cmd+左矢印でカーソルを前の単語に移動
+keybind = cmd+left=esc:b
+# Cmd+右矢印でカーソルを次の単語に移動
+keybind = cmd+right=esc:f
+# Cmd+Backspaceで前の単語を削除
+keybind = cmd+backspace=text:\x17
+
+# Cmd+xでペインを閉じる
+keybind = cmd+x=close_surface
+
+# Cmd+h/j/k/lでペインサイズを調整
+keybind = cmd+h=resize_split:left,10
+keybind = cmd+j=resize_split:down,10
+keybind = cmd+k=resize_split:up,10
+keybind = cmd+l=resize_split:right,10
+{{- else }}
 # Ctrl+Alt+= で横に分割 (WezTerm: SplitHorizontal)
 keybind = ctrl+alt+equal=new_split:right
 # Ctrl+Alt+- で縦に分割 (WezTerm: SplitVertical)
@@ -95,3 +127,4 @@ keybind = alt+h=resize_split:left,10
 keybind = alt+j=resize_split:down,10
 keybind = alt+k=resize_split:up,10
 keybind = alt+l=resize_split:right,10
+{{- end }}

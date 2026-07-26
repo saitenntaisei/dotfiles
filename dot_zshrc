@@ -7,7 +7,7 @@ unsetopt beep extendedglob
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/saitenntaisei/.zshrc'
+zstyle :compinstall filename ~/.zshrc
 
 autoload -Uz compinit
 compinit
@@ -15,14 +15,12 @@ compinit
 
 # 小文字でも大文字ディレクトリ、ファイルを補完できるようにする
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-
-
-
+# Starship
+eval "$(starship init zsh)"
 
 # autosuggestion
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # cusor
 # _fix_cursor() {
 #    echo -ne '\e[5 q'
@@ -52,7 +50,6 @@ precmd() {
    set-window-title
 }
 
-
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
 alias cat2='bat'
@@ -80,7 +77,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 export PATH=$PATH:/opt/gcc-arm-none-eabi/bin
 # append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it --rm -v  ./:/host -w /host  sagemath sage'
@@ -96,15 +93,14 @@ eval "$(fnox activate zsh)"
 eval "$(starship init zsh)"
 
 
-eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
-
-
-
-
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-source <(fzf --zsh)
-
+eval `keychain --eval ~/.ssh/id_ed25519`
 export CLAUDE_CODE_EFFORT_LEVEL=max
 
-export PATH="/home/saiten/.pixi/bin:$PATH"
+if [[ "$OSTYPE" == linux* ]]; then
+  export PATH="/usr/local/cuda/bin:$PATH"
+  export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+fi
+
+source <(fzf --zsh)
+
+export PATH="$HOME/.pixi/bin:$PATH"
