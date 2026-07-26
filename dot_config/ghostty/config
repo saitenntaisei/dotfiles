@@ -1,0 +1,97 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   ~/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+#
+# Ghostty can reload the configuration while running by using the menu
+# options or the bound key (default: Command + Shift + comma on macOS and
+# Control + Shift + comma on other platforms). Not all config options can be
+# reloaded while running; some only apply to new windows and others may require
+# a full restart to take effect.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+# タイピング中にマウスカーソルを隠さない
+mouse-hide-while-typing = false
+
+# フォントの設定
+font-family = NotoMono Nerd Font
+font-size = 13
+
+# 各ペインの背景を5%透過させ、背後の共通画像を薄く表示する
+# 1 = 不透明、0 = 完全透過
+background-opacity = 0.95
+
+# Ghostty 1.3.1 の background-image はペインごとに描画されるため、
+# GTKのタブ背景に画像を置き、全ペインで1枚の画像を共有する
+gtk-custom-css = background-image.css
+
+# 非アクティブペインだけ暗くなり、画像が分断されて見えるのを防ぐ
+unfocused-split-opacity = 1
+
+# 文字と背景の最低コントラスト比を強制し、背景画像の上でも可読性を確保する
+# (1 = 無効。上げるほど読みやすくなるが色味が変わる。1.0〜21.0)
+minimum-contrast = 1.1
+
+# ウィンドウ/ペインを閉じるときに確認しない (WezTerm: NeverPrompt)
+confirm-close-surface = false
+
+# --- キーバインドの設定 ---
+
+# Ctrl+Alt+= で横に分割 (WezTerm: SplitHorizontal)
+keybind = ctrl+alt+equal=new_split:right
+# Ctrl+Alt+- で縦に分割 (WezTerm: SplitVertical)
+keybind = ctrl+alt+minus=new_split:down
+
+# Ctrl+左矢印でカーソルを前の単語に移動 (Meta+b 相当)
+keybind = ctrl+left=esc:b
+# Ctrl+右矢印でカーソルを次の単語に移動 (Meta+f 相当)
+keybind = ctrl+right=esc:f
+# Ctrl+Backspace で前の単語を削除 (Ctrl+w 相当)
+keybind = ctrl+backspace=text:\x17
+
+# Ctrl+x でペインを閉じる (WezTerm: kill a pane)
+keybind = ctrl+x=close_surface
+
+# Alt+h/j/k/l でペインサイズを調整
+keybind = alt+h=resize_split:left,10
+keybind = alt+j=resize_split:down,10
+keybind = alt+k=resize_split:up,10
+keybind = alt+l=resize_split:right,10
