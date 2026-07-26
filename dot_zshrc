@@ -101,13 +101,10 @@ eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
 
 
 
-
 export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-
 source <(fzf --zsh)
 
-export MISE_DISABLE_PLUGIN_PYTHON=1
+export CLAUDE_CODE_EFFORT_LEVEL=max
 
-# echo eval `keychain --eval --agents ssh $HOME/.ssh/id_ed25519`
-source $HOME/wezterm.sh
+export PATH="/home/saiten/.pixi/bin:$PATH"
