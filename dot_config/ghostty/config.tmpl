@@ -66,8 +66,9 @@ gtk-custom-css = background-image.css
 {{- else if eq .chezmoi.os "darwin" }}
 # macOSではGTK CSSを使えないため、Ghostty標準の背景画像を使用する
 # 背景画像はペインごとに描画される
-background-image = {{ .chezmoi.homeDir }}/Pictures/miko.png
-background-image-opacity = 1
+background-blur = 20
+background-image = ~/Pictures/miko.png
+background-image-opacity = 0.05
 background-image-position = center
 background-image-fit = cover
 background-image-repeat = false
