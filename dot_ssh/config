@@ -1,10 +1,7 @@
-Include "/home/saiten/.config/NVIDIA/Sync/config/ssh_config"
-
-
-Host github github.com
-  HostName github.com
+Host github github.com          
+  HostName github.com           
   IdentityFile ~/.ssh/id_ed25519
-  User git
+  User git                      
 
 Host *
   TCPKeepAlive yes
@@ -26,7 +23,7 @@ Host d1
   HostName 192.168.1.220
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
-Host d2
+Host d2 
   HostName 192.168.1.221
   IdentityFile ~/.ssh/id_ed25519
   ForwardAgent yes
@@ -40,11 +37,11 @@ Host d3
   ForwardAgent yes
 
 
-Host d4
-  HostName 192.168.1.224
-  IdentityFile ~/.ssh/id_ed25519
-  User kamiguchi
-  ForwardAgent yes
+Host d4                          
+  HostName 192.168.1.224         
+  IdentityFile ~/.ssh/id_ed25519 
+  User kamiguchi                 
+  ForwardAgent yes               
 
 
 
@@ -54,7 +51,7 @@ Host nlab-nuc
   User kamiguchi
   ForwardX11 yes
 
-Host nlab-win
+Host nlab-win 
   HostName 192.168.1.223
   IdentityFile ~/.ssh/id_ed25519
   AddKeysToAgent yes
@@ -74,3 +71,9 @@ Host tsubame
 Host d0
   HostName 192.168.1.231
   User kamiguchi
+
+Host spark-817e.local
+  Hostname spark-817e.local
+  User nlab
+  Port 22
+  IdentityFile "~/.config/NVIDIA/Sync/config/nvsync.key"
