@@ -1,49 +1,60 @@
 Include "/home/saiten/.config/NVIDIA/Sync/config/ssh_config"
-Host raspberry.local
-  HostName raspberry.local
-  ForwardAgent yes
-  User pi
+
 
 Host github github.com
   HostName github.com
   IdentityFile ~/.ssh/id_ed25519
   User git
 
-Host poifull poifull.rogiken.org
+Host *
+  TCPKeepAlive yes
+  ForwardAgent yes
+  ForwardX11 yes
+
+
+Host poifull
   HostName poifull.rogiken.org
   IdentityFile ~/.ssh/id_rsa
   User 21-const
 
-Host pi raspberrypi
+Host pi
   HostName raspberrypi
   IdentityFile ~/.ssh/id_ed25519
   User pi
-  ForwardX11 yes
 
-Host d1 192.168.1.220
+Host d1
   HostName 192.168.1.220
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
-  ForwardAgent yes
-
-Host d2 192.168.1.221
+Host d2
   HostName 192.168.1.221
   IdentityFile ~/.ssh/id_ed25519
   ForwardAgent yes
   User kamiguchi
   ForwardX11 yes
 
-Host d3 192.168.1.222
+Host d3
   HostName 192.168.1.222
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
   ForwardAgent yes
-Host nlab-nuc nlab-nuc.local
+
+
+Host d4
+  HostName 192.168.1.224
+  IdentityFile ~/.ssh/id_ed25519
+  User kamiguchi
+  ForwardAgent yes
+
+
+
+Host nlab-nuc
   HostName nlab-nuc.local
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
   ForwardX11 yes
-Host nlab-win 192.168.1.223
+
+Host nlab-win
   HostName 192.168.1.223
   IdentityFile ~/.ssh/id_ed25519
   AddKeysToAgent yes
@@ -54,18 +65,12 @@ Host dubguild
   User kamiguchi
   IdentityFile ~/.ssh/id_ed25519
   IdentitiesOnly yes
-  TCPKeepAlive yes
-  ForwardAgent yes
 
 Host tsubame
   HostName login.t4.gsic.titech.ac.jp
   User ug04066
   ForwardAgent yes
 
-Host dp-render
-  HostName 192.168.1.220
-  IdentityFile ~/.ssh/id_ed25519
-  User root
-  ForwardAgent yes
-  ForwardX11 yes
-  Port 2223
+Host d0
+  HostName 192.168.1.231
+  User kamiguchi
