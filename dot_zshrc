@@ -89,6 +89,9 @@ alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it -
 # mise 
 eval "$(mise activate zsh)"
 
+# fnox
+eval "$(fnox activate zsh)"
+
 # Starship
 eval "$(starship init zsh)"
 

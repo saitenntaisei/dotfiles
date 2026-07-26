@@ -1,0 +1,15 @@
+[tools]
+chezmoi = "latest"
+fnox = "latest"
+fzf = "latest"
+gcc-arm-none-eabi = "latest"
+gh = "latest"
+go = "latest"
+lazygit = "latest"
+neovim = "latest"
+node = "24"
+rust = "stable"
+uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["python"]
