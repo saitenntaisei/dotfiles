@@ -79,9 +79,6 @@ export PATH=$PATH:/opt/gcc-arm-none-eabi/bin
 # append completions to fpath
  fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 autoload -Uz compinit && compinit
 alias sage='docker run --name sagemath  --add-host=localhost:host-gateway  -it --rm -v  ./:/host -w /host  sagemath sage'
 
@@ -93,7 +90,10 @@ eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
 
-eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
+eval `keychain --eval ~/.ssh/id_ed25519`
+export CLAUDE_CODE_EFFORT_LEVEL=max
 
 
 
+
+export PATH="/Users/saitenntaisei/.pixi/bin:$PATH"
