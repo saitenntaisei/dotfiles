@@ -38,6 +38,13 @@ Host d3 192.168.1.222
   IdentityFile ~/.ssh/id_ed25519
   User kamiguchi
   ForwardAgent yes
+
+Host d4
+  HostName 192.168.1.224
+  IdentityFile ~/.ssh/id_ed25519
+  User kamiguchi
+  ForwardAgent yes
+
 Host nlab-nuc nlab-nuc.local
   HostName nlab-nuc.local
   IdentityFile ~/.ssh/id_ed25519
