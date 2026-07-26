@@ -71,3 +71,9 @@ Host tsubame
 Host d0
   HostName 192.168.1.231
   User kamiguchi
+
+Host spark-817e.local
+  HostName spark-817e.local
+  User nlab
+  Port 22
+  IdentityFile ~/.config/NVIDIA/Sync/config/nvsync.key
