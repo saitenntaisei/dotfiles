@@ -1,9 +1,9 @@
-Host github
+Host github github.com
   HostName github.com
   IdentityFile ~/.ssh/id_ed25519
   User git
 
-Host * !github
+Host * !github !github.com
   TCPKeepAlive yes
   ForwardAgent yes
   ForwardX11 yes
