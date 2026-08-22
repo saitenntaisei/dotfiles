@@ -64,6 +64,9 @@ background-opacity = 0.95
 # GTKのタブ背景に画像を置き、全ペインで1枚の画像を共有する
 gtk-custom-css = background-image.css
 {{- else if eq .chezmoi.os "darwin" }}
+# OptionをAltとしてtmuxへ渡す
+macos-option-as-alt = true
+
 # macOSではGTK CSSを使えないため、Ghostty標準の背景画像を使用する
 # 背景画像はペインごとに描画される
 background-blur = 20
