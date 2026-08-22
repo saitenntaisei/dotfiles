@@ -1,10 +1,11 @@
 [tools]
+"aqua:astral-sh/uv" = "0.12.2"
 chezmoi = "latest"
 fnox = "latest"
 fzf = "latest"
 gcc-arm-none-eabi = "latest"
 gh = "latest"
-go = "latest"
+go = "1.26.4"
 lazygit = "latest"
 neovim = "latest"
 node = "24"
